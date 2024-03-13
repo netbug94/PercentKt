@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
@@ -40,9 +41,10 @@ fun MainScreenH() {
     val percentValue = percent.text.toIntOrNull() ?: 0
     val percentageCalculator = PercentFunctions(amount = amountValue, percent = percentValue)
 
-
 // Container
-    Column(modifier = Modifier.fillMaxSize().background(color = ErgoWhite),
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(color = ErgoWhite),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
 
 // Title container
@@ -151,7 +153,17 @@ fun MainScreenH() {
 // Image container
         Column(modifier = Modifier
             .fillMaxSize()
-            .weight(4f)) {
+            .weight(4f)
+            .padding(horizontal = 100.dp),
+            verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+            Spacer(modifier = Modifier.fillMaxSize().weight(2f))
+            Button(modifier = Modifier.fillMaxSize().weight(2f),
+                onClick = {
+                    amount = TextFieldValue("")
+                    percent = TextFieldValue("") }) {
+                Text(text = "Clear")
+            }
+            Spacer(modifier = Modifier.fillMaxSize().weight(5f))
         }
     }
 }
