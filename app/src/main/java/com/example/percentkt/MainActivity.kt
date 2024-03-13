@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.percentkt.UIHandler.ScreenHandler
 import com.example.percentkt.ui.theme.PercentKtTheme
 
 class MainActivity : ComponentActivity() {

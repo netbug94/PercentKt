@@ -1,5 +1,6 @@
 package com.example.percentkt.view
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,7 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Divider
+import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -28,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.percentkt.engine_logic.PercentFunctions
+import com.example.percentkt.ui.theme.ErgoWhite
 
 @Preview(showBackground = true)
 @Composable
@@ -38,9 +41,11 @@ fun MainScreenV() {
     val percentValue = percent.text.toIntOrNull() ?: 0
     val percentageCalculator = PercentFunctions(amount = amountValue, percent = percentValue)
 
-
 // Container
-    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(color = ErgoWhite),
+        horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
 
 // Title container
         Row(modifier = Modifier
@@ -90,8 +95,9 @@ fun MainScreenV() {
                     .fillMaxSize()
                     .weight(0.5f)
                 )
-                Divider(modifier = Modifier
-                    .height(1.dp), color = Color.Black
+                HorizontalDivider(
+                    modifier = Modifier
+                        .height(1.dp), color = Color.Black
                 )
                 Spacer(modifier = Modifier
                     .fillMaxSize()
@@ -113,7 +119,7 @@ fun MainScreenV() {
                         .weight(4f),
                     textStyle = LocalTextStyle.current,
                     singleLine = true,
-                    placeholder = { Text("Enter %") },
+                    label = { Text("Enter %") },
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Number,
                         imeAction = ImeAction.Done
@@ -132,7 +138,7 @@ fun MainScreenV() {
                         .weight(4f),
                     textStyle = LocalTextStyle.current,
                     singleLine = true,
-                    placeholder = { Text("Enter base amount") },
+                    label = { Text("Enter base amount") },
                     keyboardOptions = KeyboardOptions.Default.copy(
                         keyboardType = KeyboardType.Number,
                         imeAction = ImeAction.Done
@@ -147,7 +153,17 @@ fun MainScreenV() {
 // Image container
         Column(modifier = Modifier
             .fillMaxSize()
-            .weight(4f)) {
+            .weight(4f)
+            .padding(horizontal = 100.dp),
+            verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+            Spacer(modifier = Modifier.fillMaxSize().weight(2f))
+            Button(modifier = Modifier.fillMaxSize().weight(2f),
+                onClick = { 
+                amount = TextFieldValue("")
+                percent = TextFieldValue("") }) {
+                Text(text = "Clear")
+            }
+            Spacer(modifier = Modifier.fillMaxSize().weight(5f))
         }
     }
 }
