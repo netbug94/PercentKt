@@ -15,10 +15,6 @@ import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -29,16 +25,17 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.percentkt.engine_logic.PercentFunctions
+import com.example.percentkt.engine_logic.PercentKtViewModel
 import com.example.percentkt.ui.theme.ErgoWhite
 
 @Preview(showBackground = true)
 @Composable
 fun MainScreenV() {
-    var amount by remember { mutableStateOf(TextFieldValue("")) }
-    var percent by remember { mutableStateOf(TextFieldValue("")) }
-    val amountValue = amount.text.toFloatOrNull() ?: 0f
-    val percentValue = percent.text.toIntOrNull() ?: 0
+    val viewModel: PercentKtViewModel = viewModel()
+    val amountValue = viewModel.amount.text.toFloatOrNull() ?: 0f
+    val percentValue = viewModel.percent.text.toIntOrNull() ?: 0
     val percentageCalculator = PercentFunctions(amount = amountValue, percent = percentValue)
 
 // Container
@@ -111,8 +108,8 @@ fun MainScreenV() {
                 .padding(horizontal = 20.dp)) {
 
                 OutlinedTextField(
-                    value = percent,
-                    onValueChange = { percent = it },
+                    value = viewModel.percent,
+                    onValueChange = { viewModel.percent = it },
                     modifier = Modifier
                         .fillMaxSize()
                         .weight(4f),
@@ -129,8 +126,8 @@ fun MainScreenV() {
                     .weight(1f)
                 )
                 OutlinedTextField(
-                    value = amount,
-                    onValueChange = { amount = it },
+                    value = viewModel.amount,
+                    onValueChange = { viewModel.amount = it },
                     modifier = Modifier
                         .fillMaxSize()
                         .fillMaxSize()
@@ -157,9 +154,9 @@ fun MainScreenV() {
             verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(modifier = Modifier.fillMaxSize().weight(2f))
             Button(modifier = Modifier.fillMaxSize().weight(2f),
-                onClick = { 
-                amount = TextFieldValue("")
-                percent = TextFieldValue("") }) {
+                onClick = {
+                    viewModel.amount = TextFieldValue("")
+                    viewModel.percent = TextFieldValue("") }) {
                 Text(text = "Clear")
             }
             Spacer(modifier = Modifier.fillMaxSize().weight(5f))

@@ -6,7 +6,4 @@ data class PercentFunctions(var amount: Float = 0F, var percent: Int = 0) {
     val basePlusPercentage: Float
         get() = amount + percentageOfBase
 
-    // Call this variables for only 2 decimals format
-    val formattedBase = "%.2f".format(percentageOfBase)
-    val formattedBasePlus = "%.2f".format(basePlusPercentage)
 }
