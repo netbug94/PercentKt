@@ -1,6 +1,5 @@
 package com.example.percentkt.view
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.percentkt.engine_logic.PercentFunctions
 import com.example.percentkt.engine_logic.PercentKtViewModel
-import com.example.percentkt.ui.theme.ErgoWhite
 
 @Preview(showBackground = true)
 @Composable
@@ -39,8 +37,7 @@ fun MainScreenH() {
 
 // Container
     Column(modifier = Modifier
-        .fillMaxSize()
-        .background(color = ErgoWhite),
+        .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
 
 // Result + Divider + Input -> Container
