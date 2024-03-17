@@ -59,7 +59,7 @@ fun MainScreenV() {
 // Result + Divider + Input -> Container
         Column(modifier = Modifier
             .fillMaxSize()
-            .weight(6f)) {
+            .weight(5f)) {
 // Results container
             Column(modifier = Modifier
                 .fillMaxSize()
@@ -88,12 +88,12 @@ fun MainScreenV() {
 // Divider container
             Column(modifier = Modifier
                 .fillMaxSize()
-                .weight(1f)
+                .weight(2f)
                 .padding(horizontal = 20.dp)) {
 
                 Spacer(modifier = Modifier
                     .fillMaxSize()
-                    .weight(0.5f)
+                    .weight(0.7f)
                 )
                 HorizontalDivider(
                     modifier = Modifier
@@ -114,7 +114,6 @@ fun MainScreenV() {
                     value = percent,
                     onValueChange = { percent = it },
                     modifier = Modifier
-                        .fillMaxSize()
                         .fillMaxSize()
                         .weight(4f),
                     textStyle = LocalTextStyle.current,

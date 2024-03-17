@@ -115,8 +115,7 @@ fun MainScreenH() {
                     onValueChange = { percent = it },
                     modifier = Modifier
                         .fillMaxSize()
-                        .fillMaxSize()
-                        .weight(4f),
+                        .weight(5f),
                     textStyle = LocalTextStyle.current,
                     singleLine = true,
                     label = { Text("Enter %") },
@@ -134,8 +133,7 @@ fun MainScreenH() {
                     onValueChange = { amount = it },
                     modifier = Modifier
                         .fillMaxSize()
-                        .fillMaxSize()
-                        .weight(4f),
+                        .weight(5f),
                     textStyle = LocalTextStyle.current,
                     singleLine = true,
                     label = { Text("Enter base amount") },
@@ -150,20 +148,19 @@ fun MainScreenH() {
                 )
             }
         }
-// Image container
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .weight(4f)
+// Clear button
+        Column(modifier = Modifier.fillMaxSize()
+            .weight(3f)
             .padding(horizontal = 100.dp),
             verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-            Spacer(modifier = Modifier.fillMaxSize().weight(2f))
-            Button(modifier = Modifier.fillMaxSize().weight(2f),
+            Spacer(modifier = Modifier.fillMaxSize().weight(1f))
+            Button(modifier = Modifier.fillMaxSize().weight(1.5f).padding(horizontal = 80.dp),
                 onClick = {
                     amount = TextFieldValue("")
                     percent = TextFieldValue("") }) {
                 Text(text = "Clear")
             }
-            Spacer(modifier = Modifier.fillMaxSize().weight(5f))
+            Spacer(modifier = Modifier.fillMaxSize().weight(1f))
         }
     }
 }
