@@ -55,7 +55,7 @@ fun MainScreenH() {
 
                 Row(modifier = Modifier
                     .fillMaxSize()
-                    .shadow(elevation = 2.dp)
+                    .shadow(elevation = 2.dp, spotColor = MaterialTheme.colorScheme.secondary)
                     .weight(2f),
                     verticalAlignment = Alignment.CenterVertically) {
                     Text(text = "Base + Result = ${percentageCalculator.basePlusPercentage}", modifier = Modifier.padding(start = 15.dp))
@@ -66,7 +66,7 @@ fun MainScreenH() {
                 )
                 Row(modifier = Modifier
                     .fillMaxSize()
-                    .shadow(elevation = 2.dp)
+                    .shadow(elevation = 2.dp, spotColor = MaterialTheme.colorScheme.secondary)
                     .weight(2f),
                     verticalAlignment = Alignment.CenterVertically) {
                     Text(text = "Percentage Result = ${percentageCalculator.percentageOfBase}", modifier = Modifier.padding(start = 15.dp))
@@ -83,7 +83,7 @@ fun MainScreenH() {
                 )
                 HorizontalDivider(
                     modifier = Modifier
-                        .height(1.dp), color = MaterialTheme.colorScheme.primary
+                        .height(1.dp), color = MaterialTheme.colorScheme.secondary
                 )
                 Spacer(modifier = Modifier
                     .height(8.dp)
@@ -127,15 +127,14 @@ fun MainScreenH() {
         Column(modifier = Modifier
             .fillMaxSize()
             .weight(1.5f)
-            .padding(horizontal = 100.dp),
+            .padding(horizontal = 180.dp),
             verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(modifier = Modifier
                 .fillMaxSize()
-                .weight(.3f))
+                .weight(.5f))
             Button(modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
-                .padding(horizontal = 80.dp)
                 .background(color = MaterialTheme.colorScheme.primary),
                 onClick = {
                     viewModel.amount = TextFieldValue("")
