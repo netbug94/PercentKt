@@ -1,5 +1,6 @@
 package com.example.percentkt.view
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,13 +12,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
@@ -27,6 +28,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.percentkt.engine_logic.PercentFunctions
 import com.example.percentkt.engine_logic.PercentKtViewModel
 
+// Landscape container
 @Preview(showBackground = true)
 @Composable
 fun MainScreenH() {
@@ -81,7 +83,7 @@ fun MainScreenH() {
                 )
                 HorizontalDivider(
                     modifier = Modifier
-                        .height(1.dp), color = Color.Black
+                        .height(1.dp), color = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier
                     .height(8.dp)
@@ -121,7 +123,7 @@ fun MainScreenH() {
                 )
             }
         }
-// Clear button
+// Clear button container
         Column(modifier = Modifier
             .fillMaxSize()
             .weight(1.5f)
@@ -133,7 +135,8 @@ fun MainScreenH() {
             Button(modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
-                .padding(horizontal = 80.dp),
+                .padding(horizontal = 80.dp)
+                .background(color = MaterialTheme.colorScheme.primary),
                 onClick = {
                     viewModel.amount = TextFieldValue("")
                     viewModel.percent = TextFieldValue("") }) {

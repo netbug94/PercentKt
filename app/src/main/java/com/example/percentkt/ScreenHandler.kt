@@ -12,14 +12,14 @@ import androidx.compose.ui.platform.LocalConfiguration
 import com.example.percentkt.view.MainScreenH
 import com.example.percentkt.view.MainScreenV
 
+// This file handles screen rotation
 object UIHandler {
     @Composable
     fun ScreenHandler() {
         var orientation by remember { mutableIntStateOf(Configuration.ORIENTATION_PORTRAIT) }
-
         val configuration = LocalConfiguration.current
 
-// If our configuration changes then this will launch a new coroutine scope for it
+// If the configuration changes then this will launch a new coroutine scope for it
         LaunchedEffect(configuration) {
 // Save any changes to the orientation value on the configuration object
             snapshotFlow { configuration.orientation }

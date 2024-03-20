@@ -1,5 +1,6 @@
 package com.example.percentkt.view
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,13 +12,13 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.LocalTextStyle
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
@@ -28,6 +29,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.percentkt.engine_logic.PercentFunctions
 import com.example.percentkt.engine_logic.PercentKtViewModel
 
+// Portrait view
 @Preview(showBackground = true)
 @Composable
 fun MainScreenV() {
@@ -62,7 +64,7 @@ fun MainScreenV() {
 
                 Row(modifier = Modifier
                     .fillMaxSize()
-                    .shadow(elevation = 2.dp)
+                    .shadow(elevation = 2.dp, spotColor = MaterialTheme.colorScheme.secondary)
                     .weight(2f),
                     verticalAlignment = Alignment.CenterVertically) {
                     Text(text = "Base + Result = ${percentageCalculator.basePlusPercentage}", modifier = Modifier.padding(start = 15.dp))
@@ -73,7 +75,7 @@ fun MainScreenV() {
                 )
                 Row(modifier = Modifier
                     .fillMaxSize()
-                    .shadow(elevation = 2.dp)
+                    .shadow(elevation = 2.dp, spotColor = MaterialTheme.colorScheme.secondary)
                     .weight(2f),
                     verticalAlignment = Alignment.CenterVertically) {
                     Text(text = "Percentage Result = ${percentageCalculator.percentageOfBase}", modifier = Modifier.padding(start = 15.dp))
@@ -91,7 +93,7 @@ fun MainScreenV() {
                 )
                 HorizontalDivider(
                     modifier = Modifier
-                        .height(1.dp), color = Color.Black
+                        .height(1.dp), color = MaterialTheme.colorScheme.secondary
                 )
                 Spacer(modifier = Modifier
                     .fillMaxSize()
@@ -143,14 +145,14 @@ fun MainScreenV() {
                 )
             }
         }
-// Image container
+// Clear button container
         Column(modifier = Modifier
             .fillMaxSize()
             .weight(4f)
             .padding(horizontal = 100.dp),
             verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
             Spacer(modifier = Modifier.fillMaxSize().weight(2f))
-            Button(modifier = Modifier.fillMaxSize().weight(2f),
+            Button(modifier = Modifier.fillMaxSize().weight(2f).background(color = MaterialTheme.colorScheme.primary),
                 onClick = {
                     viewModel.amount = TextFieldValue("")
                     viewModel.percent = TextFieldValue("") }) {
